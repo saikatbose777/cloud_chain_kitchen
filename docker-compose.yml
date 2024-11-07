@@ -1,0 +1,20 @@
+version: '3'
+services:
+  backend:
+    image: cloud_chain_kitchen_backend
+    build:
+      context: ./backend
+    ports:
+      - "5000:5000"
+    environment:
+      - MONGO_URI=ymongodb+srv://3hustlers:Oct8!88low@cloudchainkitchen.l5dvf.mongodb.net/?retryWrites=true&w=majority&appName=cloudChainKitchen
+      - JWT_SECRET=a4f8071f7ac2ed8b6b942eeae5448cdd0f2c0897a1edbdbe01389ff943f7bc61
+    volumes:
+      - ./backend:/usr/src/app
+
+  frontend:
+    image: cloud_chain_kitchen_frontend
+    build:
+      context: ./frontend
+    ports:
+      - "80:80"
